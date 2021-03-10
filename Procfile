@@ -1,1 +1,1 @@
-web: gunicorn app:castle_monitor_server
+web: gunicorn app:hw-monitor-service
