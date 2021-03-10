@@ -1,0 +1,1 @@
+web: gunicorn app:castle_monitor_server
