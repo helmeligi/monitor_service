@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>VIS CASTLE Usage Dashboard</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">VIS CASTLE Usage Dashboard</h1>
+    {% if sessions|length < 1 %}
+    <h4 style="text-align: center">There are no sessions data.</h4>
+    {% else %}
+    
+	<div class="form">
+        <form action="/login" method="GET">
+            <input type="submit" value="Refresh">
+        </form>
+    </div>
+
+	
+	<table>
+        <tr>
+            <th>Session ID</th>
+            <th>Date Created</th>
+            <th>Bench ID</th>
+            <th>User</th>
+            <th>PIP Version</th>
+            <th>FW Version</th>
+			<th>Project</th>
+            <th>Team</th>
+            <th>Site</th>
+			<th>Is Calibrated</th>
+			<th>Calibration Date</th>
+			<th>Defects List</th>
+        </tr>
+        {% for session in sessions %}
+            <tr>
+                <td>{{ session.id }}</td>
+				<td>{{ session.date_created }}</td>
+				<td>{{ session.benchid }}</td>
+				<td>{{ session.username }}</td>
+				<td>{{ session.pipversion }}</td>
+				<td>{{ session.fwversion }}</td>
+				<td>{{ session.prj }}</td>
+				<td>{{ session.team }}</td>
+                <td>{{ session.loc }}</td>
+                <td>{{ session.is_calibrated }}</td>
+				<td>{{ session.calib_date }}</td>
+				<td>{{ session.defects }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+</div>
+{% endblock %}
